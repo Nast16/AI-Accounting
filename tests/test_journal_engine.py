@@ -1,5 +1,9 @@
 from src.core.journal_engine import generate_journal_entry
 
+# --------------------------------
+#    Function Expense & Cash
+# --------------------------------
+
 def test_expense_cash():
     tx = {"transaction_type": "expense", "payment_method": "cash", "amount": 500000}
     entry = generate_journal_entry(tx)
