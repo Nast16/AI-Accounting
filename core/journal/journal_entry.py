@@ -9,6 +9,7 @@ class JournalEntry:
         self.reference = reference
         self.date = date or datetime.now()
         self.lines: List[JournalLine] = []
+        self.period = None
 
     def add_line(self, line: JournalLine):
         self.lines.append(line)

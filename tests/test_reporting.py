@@ -9,6 +9,8 @@ from core.ledger.ledger_engine import LedgerEngine
 
 from core.reporting.report_engine import ReportEngine
 
+from core.chart_of_accounts.account_type import AccountType
+
 def test_financial_reports():
     entry = JournalEntry("INV-001")
     entry.add_line(JournalLine("1001", debit=Decimal("100000")))
@@ -17,8 +19,8 @@ def test_financial_reports():
     JournalEngine.post(entry)
 
     ledger = LedgerEngine()
-    ledger.add_account(Account("1001", "Cash", "debit"))
-    ledger.add_account(Account("4001", "Revenue", "credit"))
+    ledger.add_account(Account("1001", "Cash", AccountType.ASSET))
+    ledger.add_account(Account("4001", "Revenue", AccountType.REVENUE))
 
     for le in PostingEngine.generate(entry):
         ledger.post(le)
